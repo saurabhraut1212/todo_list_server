@@ -76,8 +76,8 @@ const getById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getById = getById;
 const update = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title } = req.body;
-    const result = yield todoService.updateTodo(req.params.id, title);
+    const data = req.body;
+    const result = yield todoService.updateTodo(req.params.id, data);
     if (result.success) {
         res.status(200).json({ message: result.message, data: result.data });
     }

@@ -19,13 +19,6 @@ const createTodo = (title) => __awaiter(void 0, void 0, void 0, function* () {
                 message: "Title is required",
             };
         }
-        const existingTodo = yield todo_1.Todo.findOne({ title: title });
-        if (existingTodo) {
-            return {
-                success: false,
-                message: "Todo with this title already exists",
-            };
-        }
         const newTodo = yield todo_1.Todo.create(title);
         return {
             success: true,
@@ -85,6 +78,7 @@ const updateTodo = (id, data) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const updatedTodo = yield todo_1.Todo.findByIdAndUpdate(id, data, {
             new: true,
+            runValidators: true,
         });
         if (!updatedTodo) {
             return {

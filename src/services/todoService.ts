@@ -18,13 +18,7 @@ export const createTodo = async (title: ITodo): Promise<ServiceResult> => {
         message: "Title is required",
       };
     }
-    const existingTodo = await Todo.findOne({ title: title });
-    if (existingTodo) {
-      return {
-        success: false,
-        message: "Todo with this title already exists",
-      };
-    }
+
     const newTodo = await Todo.create(title);
     return {
       success: true,
@@ -84,6 +78,7 @@ export const updateTodo = async (
   try {
     const updatedTodo = await Todo.findByIdAndUpdate(id, data, {
       new: true,
+      runValidators: true,
     });
     if (!updatedTodo) {
       return {

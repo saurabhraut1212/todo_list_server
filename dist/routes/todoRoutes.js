@@ -41,7 +41,7 @@ const todoController = __importStar(require("../controllers/todoController"));
 const validateRequest_1 = require("../middlewares/validateRequest");
 const todoValidations_1 = require("../validations/todoValidations");
 const router = express_1.default.Router();
-router.post("/create", (0, validateRequest_1.validateRequest)(todoValidations_1.createTodoSchema), todoController.create);
+router.post("/create", todoController.create);
 router.get("/getAll", todoController.getAll);
 router.get("/getById/:id", todoController.getById);
 router.put("/update/:id", (0, validateRequest_1.validateRequest)(todoValidations_1.updateTodoSchema), todoController.update);

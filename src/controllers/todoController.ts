@@ -30,8 +30,8 @@ export const getById = async (req: Request, res: Response) => {
 };
 
 export const update = async (req: Request, res: Response) => {
-  const { title } = req.body;
-  const result = await todoService.updateTodo(req.params.id, title);
+  const data = req.body;
+  const result = await todoService.updateTodo(req.params.id, data);
   if (result.success) {
     res.status(200).json({ message: result.message, data: result.data });
   } else {
