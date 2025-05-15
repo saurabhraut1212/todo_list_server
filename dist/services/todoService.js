@@ -11,15 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTodo = exports.updateTodo = exports.getTodoById = exports.getAllTodos = exports.createTodo = void 0;
 const todo_1 = require("../models/todo");
-const createTodo = (title) => __awaiter(void 0, void 0, void 0, function* () {
+const createTodo = (todo) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        if (!title) {
+        if (!todo.title) {
             return {
                 success: false,
                 message: "Title is required",
             };
         }
-        const newTodo = yield todo_1.Todo.create(title);
+        const newTodo = yield todo_1.Todo.create(todo);
         return {
             success: true,
             message: "Todo created successfully",

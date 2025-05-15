@@ -10,16 +10,16 @@ interface ServiceResult {
   data?: any;
 }
 
-export const createTodo = async (title: ITodo): Promise<ServiceResult> => {
+export const createTodo = async (todo: ITodo): Promise<ServiceResult> => {
   try {
-    if (!title) {
+    if (!todo.title) {
       return {
         success: false,
         message: "Title is required",
       };
     }
 
-    const newTodo = await Todo.create(title);
+    const newTodo = await Todo.create(todo);
     return {
       success: true,
       message: "Todo created successfully",

@@ -8,7 +8,7 @@ export const validateRequest = (schema: AnyZodObject) => {
     next: NextFunction
   ): Promise<void> => {
     try {
-      await schema.parseAsync({ body: req.body });
+      await schema.parseAsync(req.body);
       next();
     } catch (error: any) {
       res.status(400).json({
