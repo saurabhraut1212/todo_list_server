@@ -8,7 +8,11 @@ import {
 
 const router = express.Router();
 
-router.post("/create", todoController.create);
+router.post(
+  "/create",
+  validateRequest(createTodoSchema),
+  todoController.create
+);
 router.get("/getAll", todoController.getAll);
 router.get("/getById/:id", todoController.getById);
 router.put(
